@@ -2603,17 +2603,6 @@ function CustomCursor() {
     "aria-hidden": "true"
   }));
 }
-
-/* ---------- price helpers ---------- */
-function priceNum(p) {
-  return parseInt(String(p).replace(/[^0-9]/g, ""), 10) || 0;
-}
-function eur(n) {
-  return "€" + Math.round(n).toLocaleString("sk-SK");
-}
-function kitDiscount(count) {
-  return count >= 5 ? 0.15 : count >= 3 ? 0.1 : count >= 2 ? 0.05 : 0;
-}
 Object.assign(window, {
   ratingsStore,
   kitStore,
@@ -2622,10 +2611,7 @@ Object.assign(window, {
   MagneticButton,
   CustomCursor,
   finePointer,
-  reduceMotion,
-  priceNum,
-  eur,
-  kitDiscount
+  reduceMotion
 });
 })();</script>
 <script>/* cover.jsx */
@@ -2828,10 +2814,6 @@ const STR = {
   tag: {
     en: "DEV1S × GuardiaN / 2026",
     sk: "DEV1S × GuardiaN / 2026"
-  },
-  price: {
-    en: "Indicative price",
-    sk: "Orientačná cena"
   },
   size: {
     en: "Size",
@@ -3089,7 +3071,6 @@ const FEATURES = [{
     en: "“Rise to a high wave”",
     sk: "„Rise to a high wave“"
   },
-  price: "€34",
   variant: {
     type: "flavour",
     options: ["Passion Fruit"]
@@ -3119,7 +3100,6 @@ const FEATURES = [{
     en: "“Clarity, hour after hour”",
     sk: "„Jasnosť hodinu za hodinou“"
   },
-  price: "€149",
   variant: {
     type: "colourway",
     options: ["Gold / Black"]
@@ -3149,7 +3129,6 @@ const FEATURES = [{
     en: "“Built for overtime”",
     sk: "„Stavané na predĺženie“"
   },
-  price: "€399",
   variant: {
     type: "colourway",
     options: ["Gold / Black"]
@@ -3179,7 +3158,6 @@ const FEATURES = [{
     en: "“Friction, gone”",
     sk: "„Bez trenia“"
   },
-  price: "€99",
   variant: {
     type: "colourway",
     options: ["Gold / Black"]
@@ -3209,7 +3187,6 @@ const FEATURES = [{
     en: "“Heavyweight, match-day”",
     sk: "„Heavyweight, match-day“"
   },
-  price: "€89",
   variant: {
     type: "size",
     options: ["XS", "S", "M", "L", "XL", "XXL", "3XL"]
@@ -3239,7 +3216,6 @@ const FEATURES = [{
     en: "“Everyday signature”",
     sk: "„Každodenná signatúra“"
   },
-  price: "€45",
   variant: {
     type: "size",
     options: ["XS", "S", "M", "L", "XL", "XXL", "3XL"]
@@ -3269,7 +3245,6 @@ const FEATURES = [{
     en: "“Crown it”",
     sk: "„Korunuj to“"
   },
-  price: "€39",
   variant: {
     type: "size",
     options: [{
@@ -3302,7 +3277,6 @@ const FEATURES = [{
     en: "“Stay locked in”",
     sk: "„Stay locked in“"
   },
-  price: "€29",
   variant: {
     type: "size",
     options: [{
@@ -3716,8 +3690,7 @@ Object.assign(window, {
 })();</script>
 <script>/* lookbook.jsx */
 (function(){
-/* global React, LogoMark, FEATURES, ratingsStore, kitStore, useStore, MagneticButton,
-   priceNum, eur, kitDiscount, qrcode */
+/* global React, LogoMark, FEATURES, ratingsStore, kitStore, useStore, MagneticButton, qrcode */
 const {
   useState,
   useEffect,
@@ -3732,10 +3705,6 @@ const L = {
   pieces: {
     sk: n => `${n} ${n === 1 ? "kúsok" : n < 5 ? "kúsky" : "kúskov"}`,
     en: n => `${n} ${n === 1 ? "piece" : "pieces"}`
-  },
-  save: {
-    sk: "ušetríš",
-    en: "you save"
   },
   viewKit: {
     sk: "Zobraziť",
@@ -3789,14 +3758,6 @@ const L = {
   kitEmpty: {
     sk: "Zatiaľ nič nevybrané — pridaj kúsky tlačidlom „Pridať do kolekcie“.",
     en: "Nothing selected yet — add pieces with “Add to kit”."
-  },
-  total: {
-    sk: "Spolu",
-    en: "Total"
-  },
-  bundle: {
-    sk: "balíková cena",
-    en: "bundle price"
   },
   copy: {
     sk: "Kopírovať zhrnutie",
