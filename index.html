@@ -3535,13 +3535,7 @@ function Feature({
     className: "fw-cite"
   }, "\u2014 GuardiaN")), /*#__PURE__*/React.createElement("div", {
     className: "f-meta"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "f-price"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "amt"
-  }, data.price), /*#__PURE__*/React.createElement("span", {
-    className: "plab"
-  }, tr(STR.price, lang))), /*#__PURE__*/React.createElement(Variant, {
+  }, /*#__PURE__*/React.createElement(Variant, {
     data: data,
     lang: lang,
     value: variant,
@@ -3948,10 +3942,6 @@ function KitBar({
   const kit = useStore(kitStore);
   const names = Object.keys(kit).filter(k => kit[k]);
   const items = (window.FEATURES || []).filter(f => kit[f.name]);
-  const subtotal = items.reduce((s, f) => s + priceNum(f.price), 0);
-  const disc = kitDiscount(items.length);
-  const saved = subtotal * disc;
-  const total = subtotal - saved;
   const jump = () => {
     const el = document.getElementById("summary");
     if (el) window.scrollTo({
@@ -3975,13 +3965,10 @@ function KitBar({
   }, t(L.kitTitle, lang)), /*#__PURE__*/React.createElement("span", {
     className: "kb-sub"
   }, t(L.pieces, lang, items.length)))), /*#__PURE__*/React.createElement("div", {
-    className: "kb-mid"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "kb-total"
-  }, eur(total)), saved > 0 && /*#__PURE__*/React.createElement("span", {
-    className: "kb-save"
-  }, t(L.save, lang), " ", eur(saved))), /*#__PURE__*/React.createElement("div", {
-    className: "kb-right"
+    className: "kb-right",
+    style: {
+      marginLeft: "auto"
+    }
   }, /*#__PURE__*/React.createElement("button", {
     className: "kb-view",
     onClick: jump
@@ -4029,9 +4016,6 @@ function Summary({
     if (v === "love") counts.love++;else if (v === "meh") counts.meh++;else counts.open++;
   });
   const kitItems = feats.filter(f => kit[f.name]);
-  const subtotal = kitItems.reduce((s, f) => s + priceNum(f.price), 0);
-  const disc = kitDiscount(kitItems.length);
-  const saved = subtotal * disc;
   const buildText = () => {
     const lines = [];
     lines.push("DEV1S × GuardiaN — " + t(L.sumT, lang));
@@ -4040,14 +4024,13 @@ function Summary({
     feats.forEach(f => {
       const r = ratings[f.name] || {};
       const mark = r.v === "love" ? "[♥]" : r.v === "meh" ? "[~]" : "[ ]";
-      let line = `${mark} ${f.name} (${f.price})`;
-      if (r.note && r.note.trim()) line += ` — "${r.note.trim()}"`;
+      let line = `${mark} ${f.name}`;
+      if (r.note && r.note.trim()) line += `: "${r.note.trim()}"`;
       lines.push(line);
     });
     if (kitItems.length) {
       lines.push("");
       lines.push(t(L.kitRecap, lang) + ": " + kitItems.map(f => f.name).join(", "));
-      lines.push(`${t(L.total, lang)}: ${eur(subtotal - saved)}${saved > 0 ? " (" + t(L.save, lang) + " " + eur(saved) + ")" : ""}`);
     }
     return lines.join("\n");
   };
@@ -4125,29 +4108,19 @@ function Summary({
       className: "sr-verdict " + (r.v || "none")
     }, r.v ? (r.v === "love" ? "♥ " : "◇ ") + t(verdictLabel[r.v], lang) : "—"), /*#__PURE__*/React.createElement("span", {
       className: "sr-note"
-    }, r.note && r.note.trim() ? r.note.trim() : t(L.noNote, lang)), /*#__PURE__*/React.createElement("span", {
-      className: "sr-price"
-    }, f.price));
+    }, r.note && r.note.trim() ? r.note.trim() : t(L.noNote, lang)));
   })), /*#__PURE__*/React.createElement("div", {
     className: "sum-kit"
   }, /*#__PURE__*/React.createElement("div", {
     className: "sk-head"
   }, /*#__PURE__*/React.createElement("span", {
     className: "kicker"
-  }, t(L.kitRecap, lang)), kitItems.length > 0 && /*#__PURE__*/React.createElement("span", {
-    className: "sk-total"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "skt-amt"
-  }, eur(subtotal - saved)), saved > 0 && /*#__PURE__*/React.createElement("span", {
-    className: "skt-save"
-  }, t(L.save, lang), " ", eur(saved)))), kitItems.length ? /*#__PURE__*/React.createElement("div", {
+  }, t(L.kitRecap, lang))), kitItems.length ? /*#__PURE__*/React.createElement("div", {
     className: "sk-chips"
   }, kitItems.map(f => /*#__PURE__*/React.createElement("span", {
     className: "sk-chip",
     key: f.name
-  }, f.name, /*#__PURE__*/React.createElement("span", {
-    className: "skc-p"
-  }, f.price)))) : /*#__PURE__*/React.createElement("p", {
+  }, f.name))) : /*#__PURE__*/React.createElement("p", {
     className: "sk-empty"
   }, t(L.kitEmpty, lang))), /*#__PURE__*/React.createElement("div", {
     className: "sum-actions"
