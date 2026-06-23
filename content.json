@@ -1,0 +1,573 @@
+{
+  "cover": {
+    "greet": {
+      "sk": "Ahoj, GuardiaN.",
+      "en": "Hey, GuardiaN."
+    },
+    "title1": {
+      "sk": "Tvoja kolekcia",
+      "en": "Your collection"
+    },
+    "title2": {
+      "sk": "je hotová.",
+      "en": "is ready."
+    },
+    "sub": {
+      "sk": "Osem kúskov navrhnutých okolo tvojej signatúry. Prejdi si ich, ohodnoť, čo ťa oslovilo — a launch postavíme podľa teba.",
+      "en": "Eight pieces built around your signature. Look through them, rate what lands, and we'll shape the launch around your call."
+    },
+    "enter": {
+      "sk": "Vstúpiť do kolekcie",
+      "en": "Enter the collection"
+    },
+    "scroll": {
+      "sk": "alebo scrolluj",
+      "en": "or scroll"
+    },
+    "meta": {
+      "sk": "DEV1S × GuardiaN / Kolekcia 01 / 2026",
+      "en": "DEV1S × GuardiaN / Collection 01 / 2026"
+    }
+  },
+  "ui": {
+    "collection": {
+      "en": "The Collection",
+      "sk": "Kolekcia"
+    },
+    "t1": {
+      "en": "Eight pieces.",
+      "sk": "Osem kúskov."
+    },
+    "t2": {
+      "en": "One signature.",
+      "sk": "Jedna signatúra."
+    },
+    "tag": {
+      "en": "DEV1S × GuardiaN / 2026",
+      "sk": "DEV1S × GuardiaN / 2026"
+    },
+    "size": {
+      "en": "Size",
+      "sk": "Veľkosť"
+    },
+    "flavour": {
+      "en": "Flavour",
+      "sk": "Príchuť"
+    },
+    "colourway": {
+      "en": "Colourway",
+      "sk": "Farebnosť"
+    },
+    "goldblack": {
+      "en": "Gold / Black",
+      "sk": "Zlatá / Čierna"
+    },
+    "view": {
+      "en": "View",
+      "sk": "Zväčšiť"
+    },
+    "filter": {
+      "en": "Blue-light filter",
+      "sk": "Filter modrého svetla"
+    },
+    "feedback": {
+      "en": "Your verdict",
+      "sk": "Tvoj verdikt"
+    },
+    "love": {
+      "en": "Love it",
+      "sk": "Páči sa mi"
+    },
+    "meh": {
+      "en": "Not sure",
+      "sk": "Ešte zvážim"
+    },
+    "notePh": {
+      "en": "Note for the team…",
+      "sk": "Poznámka pre tím…"
+    },
+    "pdf": {
+      "en": "Save PDF",
+      "sk": "Uložiť PDF"
+    },
+    "finalT1": {
+      "en": "This is the line.",
+      "sk": "Toto je kolekcia."
+    },
+    "finalBody": {
+      "en": "Eight products, one signature — **DEV1S × GuardiaN**. Tell us which pieces land and we'll shape the launch around your call.",
+      "sk": "Osem produktov, jedna signatúra — **DEV1S × GuardiaN**. Povedz nám, ktoré kúsky ťa oslovili, a launch postavíme podľa teba."
+    }
+  },
+  "products": {
+    "supplement": {
+      "name": "Performance",
+      "badge": {
+        "en": "Flagship",
+        "sk": "Vlajková loď"
+      },
+      "cat": {
+        "en": "Food Supplement · Passion Fruit",
+        "sk": "Výživový doplnok · Passion fruit"
+      },
+      "tag": {
+        "en": "“Rise to a high wave”",
+        "sk": "„Rise to a high wave“"
+      },
+      "body": {
+        "en": "The hero of the line — an **enhancing food supplement made for gamers**. Clean focus and energy for long sessions, with a passion-fruit hit and no crash. The colourway that defines the whole campaign.",
+        "sk": "Vlajková loď kolekcie — **výživový doplnok vytvorený pre hráčov**. Čistá energia a sústredenie na dlhé sessiony, s chuťou marakuje a bez následného útlmu. Farebnosť, ktorá definuje celú kampaň."
+      },
+      "notes": {
+        "en": [
+          "Focus & energy",
+          "Passion fruit",
+          "No crash",
+          "Gamer-formulated"
+        ],
+        "sk": [
+          "Energia a fokus",
+          "Passion fruit",
+          "Žiadny útlm",
+          "Pre hráčov"
+        ]
+      },
+      "why": {
+        "en": "Before a big match I need a clear head — this gives me that, and no crash after.",
+        "sk": "Pred dôležitým zápasom potrebujem čistú hlavu — toto mi ju dá a nepoloží ma to neskôr."
+      }
+    },
+    "glasses": {
+      "name": "Vision",
+      "cat": {
+        "en": "Eyewear",
+        "sk": "Okuliare"
+      },
+      "tag": {
+        "en": "“Clarity, hour after hour”",
+        "sk": "„Jasnosť hodinu za hodinou“"
+      },
+      "body": {
+        "en": "A **rimless blue-light frame** with carbon-fibre temples and a featherweight build that disappears on your face. Filters the harsh band from high-refresh monitors without dulling your crosshair or shifting enemy silhouettes — gold signature on the temple.",
+        "sk": "Bezrámové **okuliare proti modrému svetlu** s karbónovými ramienkami a pierkovou konštrukciou, ktorá na tvári zmizne. Filtrujú najtvrdšie pásmo z monitorov s vysokou frekvenciou bez skreslenia mieridla či siluet súperov — zlatá signatúra na ramienku."
+      },
+      "notes": {
+        "en": [
+          "Blue-light filter",
+          "Carbon-fibre temples",
+          "≈ 18 g",
+          "Anti-glare lens"
+        ],
+        "sk": [
+          "Filter modrého svetla",
+          "Karbónové ramienka",
+          "≈ 18 g",
+          "Antireflexné sklá"
+        ]
+      },
+      "why": {
+        "en": "After six hours on a 240 Hz monitor my eyes burn. With these I actually feel the difference.",
+        "sk": "Po šiestich hodinách na 240 Hz monitore ma pália oči. S týmito ten rozdiel naozaj cítim."
+      }
+    },
+    "chair": {
+      "name": "Throne",
+      "cat": {
+        "en": "Seating",
+        "sk": "Sedenie"
+      },
+      "tag": {
+        "en": "“Built for overtime”",
+        "sk": "„Stavané na predĺženie“"
+      },
+      "body": {
+        "en": "A **leather gaming chair** with gold contrast stitching and the lockup embroidered across the headrest and backrest. Ergonomics tuned for marathon sessions — deep recline, lumbar support and 4D armrests.",
+        "sk": "Kožené **herné kreslo** so zlatým kontrastným prešívaním a logom vyšitým na opierke hlavy aj chrbta. Ergonómia ladená na maratónske sessiony — hlboký sklon, bedrová opora a 4D opierky rúk."
+      },
+      "notes": {
+        "en": [
+          "Gold contrast stitch",
+          "Embroidered lockup",
+          "4D armrests",
+          "Lumbar support"
+        ],
+        "sk": [
+          "Zlaté prešívanie",
+          "Vyšité logo",
+          "4D opierky",
+          "Bedrová opora"
+        ]
+      },
+      "why": {
+        "en": "I sit in it more than I sleep. It had to survive my schedule, not just look good.",
+        "sk": "Sedím v tom viac, než spím. Muselo to vydržať môj rozvrh, nielen dobre vyzerať."
+      }
+    },
+    "mousepad": {
+      "name": "Surface",
+      "cat": {
+        "en": "Gaming Surface",
+        "sk": "Herná podložka"
+      },
+      "tag": {
+        "en": "“Friction, gone”",
+        "sk": "„Bez trenia“"
+      },
+      "body": {
+        "en": "A **tempered-glass gaming mousepad** with a micro-etched silicate surface tuned for a fast, consistent glide and pixel-precise tracking. Ultra-thin, with a full silicone base that never warps or slides, plus a discreet gold signature in the corner.",
+        "sk": "Herná podložka z **temperovaného skla** s mikro-leptaným silikátovým povrchom, ladeným na rýchly a konzistentný sklz a pixelovo presné mierenie. Ultratenká, s celoplošnou silikónovou základňou, ktorá sa nekrúti ani nešmýka, plus diskrétna zlatá signatúra v rohu."
+      },
+      "notes": {
+        "en": [
+          "Tempered glass",
+          "Fast, consistent glide",
+          "Non-slip silicone base",
+          "43 × 49 cm"
+        ],
+        "sk": [
+          "Temperované sklo",
+          "Rýchly, stabilný sklz",
+          "Nešmykľavá základňa",
+          "43 × 49 cm"
+        ]
+      },
+      "why": {
+        "en": "On glass my aim feels the same on the first flick and the five-hundredth. That consistency is everything in a clutch.",
+        "sk": "Na skle mám rovnaké mierenie pri prvom aj päťstom pohybe. Tá konzistencia je v clutchi všetko."
+      }
+    },
+    "hoodie": {
+      "name": "Hoodie",
+      "cat": {
+        "en": "Apparel",
+        "sk": "Oblečenie"
+      },
+      "tag": {
+        "en": "“Heavyweight, match-day”",
+        "sk": "„Heavyweight, match-day“"
+      },
+      "body": {
+        "en": "A **brushed heavyweight hoodie** carrying the gold DEV1S × GuardiaN lockup across the back. Cut for sitting, soft on the inside and breathable where it counts — the layer you pull on before every session.",
+        "sk": "Brúsená **mikina v ťažkej gramáži** so zlatým logom DEV1S × GuardiaN cez chrbát. Strih na sedenie, mäkká zvnútra a priedušná tam, kde treba — vrstva, ktorú si oblečieš pred každým sessionom."
+      },
+      "notes": {
+        "en": [
+          "320 gsm cotton",
+          "Gold back print",
+          "Unisex fit",
+          "XS – 3XL"
+        ],
+        "sk": [
+          "320 g/m² bavlna",
+          "Zlatá potlač vzadu",
+          "Unisex strih",
+          "XS – 3XL"
+        ]
+      },
+      "why": {
+        "en": "I take this to every LAN. I wanted something I'd actually wear off-camera too.",
+        "sk": "Toto si beriem na každú LAN-ku. Chcel som niečo, čo reálne nosím aj mimo kamier."
+      }
+    },
+    "tee": {
+      "name": "Tee",
+      "cat": {
+        "en": "Apparel",
+        "sk": "Oblečenie"
+      },
+      "tag": {
+        "en": "“Everyday signature”",
+        "sk": "„Každodenná signatúra“"
+      },
+      "body": {
+        "en": "A **soft cotton tee** with the gold back lockup — the piece you actually live in between matches. Clean front, statement back, built to survive the wash and hold its colour.",
+        "sk": "Mäkké **bavlnené tričko** so zlatým logom na chrbte — kúsok, v ktorom budeš žiť medzi zápasmi. Čistý predok, výrazný chrbát, stavané na pranie a udržanie farby."
+      },
+      "notes": {
+        "en": [
+          "Ring-spun cotton",
+          "Gold back print",
+          "Regular fit",
+          "XS – 3XL"
+        ],
+        "sk": [
+          "Česaná bavlna",
+          "Zlatá potlač vzadu",
+          "Regular fit",
+          "XS – 3XL"
+        ]
+      },
+      "why": {
+        "en": "A simple tee that survives the wash. That's all I want from one — nothing more.",
+        "sk": "Jednoduché tričko, ktoré prežije pranie. Nič viac od neho nechcem."
+      }
+    },
+    "cap": {
+      "name": "Cap",
+      "cat": {
+        "en": "Headwear",
+        "sk": "Pokrývka hlavy"
+      },
+      "tag": {
+        "en": "“Crown it”",
+        "sk": "„Korunuj to“"
+      },
+      "body": {
+        "en": "A **structured six-panel cap** with the gold lockup embroidered across the front. Adjustable strap, curved brim — the finishing piece for stage, stream or street.",
+        "sk": "Štruktúrovaná **šesťpanelová šiltovka** so zlatým logom vyšitým vpredu. Nastaviteľný pásik, zahnutý šilt — finálny kúsok na stage, stream aj ulicu."
+      },
+      "notes": {
+        "en": [
+          "Embroidered front",
+          "Adjustable strap",
+          "One size",
+          "Curved brim"
+        ],
+        "sk": [
+          "Vyšité logo",
+          "Nastaviteľná",
+          "Univerzálna",
+          "Zahnutý šilt"
+        ]
+      },
+      "why": {
+        "en": "The cap is my thing — it had to sit exactly right or I wouldn't wear it.",
+        "sk": "Šiltovka je moja vec — musela sedieť presne, inak by som ju nenosil."
+      }
+    },
+    "sleeve": {
+      "name": "Arm Sleeve",
+      "cat": {
+        "en": "Accessory",
+        "sk": "Doplnok"
+      },
+      "tag": {
+        "en": "“Stay locked in”",
+        "sk": "„Stay locked in“"
+      },
+      "body": {
+        "en": "A **compression arm sleeve** with the gold signature down the forearm. Light warmth, a little support and a clean look at the desk or on stage — small detail, full kit.",
+        "sk": "Kompresný **návlek na ruku** so zlatou signatúrou pozdĺž predlaktia. Ľahké teplo, podpora a čistý vzhľad pri stole či na pódiu — malý detail, kompletný kit."
+      },
+      "notes": {
+        "en": [
+          "Compression knit",
+          "Gold signature",
+          "Breathable",
+          "One size"
+        ],
+        "sk": [
+          "Kompresný úplet",
+          "Zlatá signatúra",
+          "Priedušný",
+          "Univerzálny"
+        ]
+      },
+      "why": {
+        "en": "A small thing, but it finishes the whole look at the desk. Detail matters.",
+        "sk": "Drobnosť, ale dotvára celý look pri stole. Na detailoch záleží."
+      }
+    }
+  },
+  "summary": {
+    "kitTitle": {
+      "sk": "Tvoja kolekcia",
+      "en": "Your kit"
+    },
+    "viewKit": {
+      "sk": "Zobraziť",
+      "en": "Review"
+    },
+    "clear": {
+      "sk": "Vyčistiť",
+      "en": "Clear"
+    },
+    "addKit": {
+      "sk": "Pridať do kolekcie",
+      "en": "Add to kit"
+    },
+    "inKit": {
+      "sk": "V kolekcii",
+      "en": "In kit"
+    },
+    "sumKick": {
+      "sk": "Zápis zo stretnutia",
+      "en": "Meeting record"
+    },
+    "sumT": {
+      "sk": "Tvoj verdikt",
+      "en": "Your verdict"
+    },
+    "loveN": {
+      "sk": "páčia sa",
+      "en": "love it"
+    },
+    "mehN": {
+      "sk": "na zváženie",
+      "en": "to consider"
+    },
+    "openN": {
+      "sk": "bez hodnotenia",
+      "en": "no verdict yet"
+    },
+    "noteCol": {
+      "sk": "Poznámka",
+      "en": "Note"
+    },
+    "noNote": {
+      "sk": "—",
+      "en": "—"
+    },
+    "kitRecap": {
+      "sk": "Vybraná kolekcia",
+      "en": "Selected kit"
+    },
+    "kitEmpty": {
+      "sk": "Zatiaľ nič nevybrané — pridaj kúsky tlačidlom „Pridať do kolekcie“.",
+      "en": "Nothing selected yet — add pieces with “Add to kit”."
+    },
+    "copy": {
+      "sk": "Kopírovať zhrnutie",
+      "en": "Copy summary"
+    },
+    "copied": {
+      "sk": "Skopírované ✓",
+      "en": "Copied ✓"
+    },
+    "send": {
+      "sk": "Odoslať tímu",
+      "en": "Send to team"
+    },
+    "reset": {
+      "sk": "Vynulovať hodnotenia",
+      "en": "Reset verdicts"
+    },
+    "resetAsk": {
+      "sk": "Vymazať všetky hodnotenia a poznámky?",
+      "en": "Clear all verdicts and notes?"
+    },
+    "verdictLove": {
+      "sk": "Páči sa",
+      "en": "Love it"
+    },
+    "verdictMeh": {
+      "sk": "Na zváženie",
+      "en": "Consider"
+    },
+    "qrCap": {
+      "sk": "Naskenuj a otvor na mobile",
+      "en": "Scan to open on your phone"
+    },
+    "tlKick": {
+      "sk": "Čo bude ďalej",
+      "en": "What's next"
+    },
+    "tlT1": {
+      "sk": "Plán launchu",
+      "en": "The launch plan"
+    },
+    "tlTag": {
+      "sk": "Štyri fázy / Q3–Q4 2026",
+      "en": "Four phases / Q3–Q4 2026"
+    },
+    "footRights": {
+      "sk": "Súkromná prezentácia — neurčené na zdieľanie.",
+      "en": "Private presentation — not for distribution."
+    }
+  },
+  "timeline": {
+    "phases": [
+      {
+        "no": "01",
+        "q": {
+          "sk": "Q3 · Júl",
+          "en": "Q3 · July"
+        },
+        "title": {
+          "sk": "Teaser",
+          "en": "Teaser"
+        },
+        "body": {
+          "sk": "Animovaný reveal loga a prvé zábery. Budovanie napätia bez odhalenia produktov.",
+          "en": "Animated logo reveal and first frames. Build anticipation without showing the products."
+        },
+        "chans": [
+          "Instagram",
+          "TikTok",
+          "X"
+        ]
+      },
+      {
+        "no": "02",
+        "q": {
+          "sk": "Q3 · August",
+          "en": "Q3 · August"
+        },
+        "title": {
+          "sk": "Reveal kolekcie",
+          "en": "Collection reveal"
+        },
+        "body": {
+          "sk": "Predstavenie všetkých ôsmich kúskov. Lookbook, fotky na mieru a tvoj príbeh ku každému.",
+          "en": "All eight pieces unveiled. Lookbook, bespoke photography and your story behind each one."
+        },
+        "chans": [
+          "Lookbook",
+          "YouTube",
+          "PR"
+        ]
+      },
+      {
+        "no": "03",
+        "q": {
+          "sk": "Q4 · September",
+          "en": "Q4 · September"
+        },
+        "title": {
+          "sk": "Drop / Predaj",
+          "en": "Drop / Sale"
+        },
+        "body": {
+          "sk": "Spustenie e-shopu. Limitovaný flagship, bundle balíček a signované kúsky.",
+          "en": "Store goes live. Limited flagship, the kit bundle and signed pieces."
+        },
+        "chans": [
+          "E-shop",
+          "Newsletter",
+          "Bundle"
+        ]
+      },
+      {
+        "no": "04",
+        "q": {
+          "sk": "Q4 · Október+",
+          "en": "Q4 · October+"
+        },
+        "title": {
+          "sk": "Stream & komunita",
+          "en": "Stream & community"
+        },
+        "body": {
+          "sk": "Nosenie počas streamov a turnajov. Komunitné výzvy a doplnenie zásob podľa dopytu.",
+          "en": "Worn on streams and at events. Community drops and restocks driven by demand."
+        },
+        "chans": [
+          "Twitch",
+          "Eventy",
+          "Restock"
+        ]
+      }
+    ]
+  },
+  "print": {
+    "kick": {
+      "sk": "Súkromná prezentácia kolekcie",
+      "en": "Private collection presentation"
+    },
+    "title": "Collection 01",
+    "forLine": {
+      "sk": "Pripravené pre",
+      "en": "Prepared for"
+    }
+  }
+}

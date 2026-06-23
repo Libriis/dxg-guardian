@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>DEV1S × GuardiaN — Admin (obsah)</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='6'%20fill='%230a0a0b'/%3E%3Ctext%20x='16'%20y='24'%20font-family='Arial'%20font-size='24'%20font-weight='900'%20text-anchor='middle'%20fill='%23edbb61'%3Ex%3C/text%3E%3C/svg%3E" />
+<style>
+  :root{
+    --bg:#0c0c0d; --panel:#141416; --panel2:#1b1b1e; --ink:#f4f2ec; --dim:rgba(244,242,236,.6);
+    --faint:rgba(244,242,236,.35); --line:rgba(244,242,236,.12); --line2:rgba(244,242,236,.2);
+    --gold:#edbb61; --gold-deep:#c8983f; --green:#3fd089; --red:#e6566f;
+    --mono:"Space Mono",ui-monospace,Menlo,Consolas,monospace;
+    --sans:"Archivo",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);display:flex;flex-direction:column;height:100vh;overflow:hidden}
+  a{color:var(--gold)}
+  /* top bar */
+  .top{display:flex;align-items:center;gap:14px;padding:11px 18px;border-bottom:1px solid var(--line);background:var(--panel);flex:0 0 auto}
+  .top .brand{font-weight:900;letter-spacing:-.02em;font-size:16px}
+  .top .brand b{color:var(--gold)}
+  .top .sub{font-family:var(--mono);font-size:11px;color:var(--faint);letter-spacing:.08em;text-transform:uppercase}
+  .top .spacer{flex:1}
+  .btn{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--line2);
+    background:transparent;color:var(--ink);padding:9px 15px;border-radius:100px;cursor:pointer;transition:.15s}
+  .btn:hover{border-color:var(--ink)}
+  .btn.primary{background:var(--gold);color:#0a0a0b;border-color:var(--gold);font-weight:700}
+  .btn.primary:hover{filter:brightness(1.05)}
+  .btn.ghost{color:var(--dim)}
+  .btn:disabled{opacity:.5;cursor:not-allowed}
+  .status{font-family:var(--mono);font-size:11px;color:var(--dim);min-width:60px}
+  .status.ok{color:var(--green)} .status.err{color:var(--red)}
+  /* main split */
+  .main{flex:1;display:grid;grid-template-columns:minmax(380px,1fr) 1.25fr;min-height:0}
+  .editor{overflow-y:auto;border-right:1px solid var(--line);padding:14px 16px 80px}
+  .preview{position:relative;background:#000;display:flex;flex-direction:column;min-width:0}
+  .preview .pv-bar{font-family:var(--mono);font-size:11px;color:var(--faint);letter-spacing:.08em;text-transform:uppercase;
+    padding:8px 14px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px;background:var(--panel)}
+  .preview iframe{flex:1;width:100%;border:0;background:#efece4}
+  /* search */
+  .search{position:sticky;top:0;z-index:5;background:var(--bg);padding:4px 0 12px;margin:-4px 0 6px}
+  .search input{width:100%;padding:10px 12px;border-radius:9px;border:1px solid var(--line2);background:var(--panel2);
+    color:var(--ink);font-family:var(--sans);font-size:14px;outline:none}
+  .search input:focus{border-color:var(--gold-deep)}
+  .hint{font-family:var(--mono);font-size:11px;color:var(--faint);line-height:1.6;margin:2px 0 12px}
+  .hint code{background:var(--panel2);padding:1px 6px;border-radius:5px;color:var(--gold)}
+  /* groups */
+  details.grp{border:1px solid var(--line);border-radius:11px;margin:0 0 10px;background:var(--panel);overflow:hidden}
+  details.grp[open]{background:var(--panel)}
+  details.grp>summary{cursor:pointer;list-style:none;padding:13px 15px;font-weight:700;font-size:14px;letter-spacing:-.01em;
+    display:flex;align-items:center;gap:9px;user-select:none}
+  details.grp>summary::-webkit-details-marker{display:none}
+  details.grp>summary::before{content:"▸";color:var(--gold);font-size:11px;transition:.15s}
+  details.grp[open]>summary::before{transform:rotate(90deg)}
+  details.grp>summary .gcount{font-family:var(--mono);font-size:10px;color:var(--faint);font-weight:400;margin-left:auto;letter-spacing:.08em}
+  .grp .body{padding:4px 15px 14px}
+  details.sub{border:0;border-top:1px solid var(--line);border-radius:0;margin:0;background:transparent}
+  details.sub>summary{padding:11px 4px;font-size:13px;color:var(--ink)}
+  .sub .body{padding:0 0 12px}
+  /* fields */
+  .fld{margin:11px 0}
+  .fld>.lab{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--dim);margin-bottom:6px;display:block}
+  .bi{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  @media(max-width:560px){.bi{grid-template-columns:1fr}}
+  .cell{display:flex;flex-direction:column;gap:4px}
+  .cell .tag{font-family:var(--mono);font-size:10px;color:var(--faint);letter-spacing:.1em}
+  textarea,.fld input[type=text]{width:100%;background:var(--panel2);border:1px solid var(--line2);border-radius:8px;
+    color:var(--ink);font-family:var(--sans);font-size:13.5px;line-height:1.45;padding:9px 11px;outline:none;resize:vertical;transition:.12s}
+  textarea:focus,.fld input[type=text]:focus{border-color:var(--gold-deep);background:#202024}
+  textarea{min-height:38px;overflow:hidden}
+  /* token dialog */
+  .scrim{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;align-items:center;justify-content:center;z-index:50;padding:20px}
+  .scrim.on{display:flex}
+  .dlg{background:var(--panel);border:1px solid var(--line2);border-radius:16px;max-width:540px;width:100%;padding:24px}
+  .dlg h2{margin:0 0 6px;font-size:20px}
+  .dlg p{color:var(--dim);font-size:13.5px;line-height:1.6;margin:8px 0}
+  .dlg ol{color:var(--dim);font-size:13px;line-height:1.7;padding-left:20px}
+  .dlg input{width:100%;margin:10px 0;padding:11px;border-radius:9px;border:1px solid var(--line2);background:var(--panel2);color:var(--ink);font-family:var(--mono);font-size:12px}
+  .dlg .row{display:flex;gap:10px;justify-content:flex-end;margin-top:8px}
+  .toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%);background:var(--panel);border:1px solid var(--line2);
+    color:var(--ink);font-family:var(--mono);font-size:12px;padding:12px 18px;border-radius:100px;z-index:60;opacity:0;transition:.25s;pointer-events:none;box-shadow:0 16px 40px -16px #000}
+  .toast.on{opacity:1;bottom:34px}
+  .toast.ok{border-color:var(--green)} .toast.err{border-color:var(--red)}
+</style>
+</head>
+<body>
+  <div class="top">
+    <span class="brand">DEV1S <b>×</b> GuardiaN</span>
+    <span class="sub">Admin obsahu</span>
+    <span class="spacer"></span>
+    <span class="status" id="saveStatus"></span>
+    <button class="btn ghost" id="discardBtn" title="Zahodiť neuložené zmeny a načítať aktuálny živý obsah">Zahodiť zmeny</button>
+    <button class="btn ghost" id="tokenBtn">Token</button>
+    <button class="btn primary" id="publishBtn">Publikovať na web</button>
+  </div>
+
+  <div class="main">
+    <div class="editor" id="editor">
+      <div class="search"><input id="search" type="text" placeholder="Hľadať text… (filtruje polia)" /></div>
+      <div class="hint">Uprav text v SK aj EN. <b>Tučné</b> písmo v popisoch produktov: obal slovo do <code>**dvoch hviezdičiek**</code>.
+        Náhľad vpravo sa aktualizuje sám. Keď si spokojný, klikni <b>Publikovať na web</b>.</div>
+      <div id="form"></div>
+    </div>
+    <div class="preview">
+      <div class="pv-bar">
+        <span>Živý náhľad</span>
+        <span style="color:var(--faint)">(zmeny sa zobrazia hneď, na web idú až po Publikovať)</span>
+        <span class="spacer" style="flex:1"></span>
+        <a id="openLive" href="index.html" target="_blank" rel="noopener">Otvoriť web ↗</a>
+      </div>
+      <iframe id="preview" src="index.html?preview=1" title="Náhľad"></iframe>
+    </div>
+  </div>
+
+  <!-- token dialog -->
+  <div class="scrim" id="tokenScrim">
+    <div class="dlg">
+      <h2>GitHub token na publikovanie</h2>
+      <p>Aby si vedel zmeny publikovať priamo na web, treba jednorazovo vložiť <b>GitHub fine-grained token</b>.
+         Uloží sa len v tomto prehliadači (localStorage), nikam inam sa neposiela.</p>
+      <ol>
+        <li>Otvor <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">github.com/settings/personal-access-tokens/new</a></li>
+        <li><b>Repository access</b> → Only select repositories → <code style="color:var(--gold)">Libriis/dxg-guardian</code></li>
+        <li><b>Permissions</b> → Repository permissions → <b>Contents</b> → <b>Read and write</b></li>
+        <li>Vytvor token a skopíruj ho (začína <code>github_pat_…</code>), vlož sem:</li>
+      </ol>
+      <input id="tokenInput" type="password" placeholder="github_pat_…" autocomplete="off" />
+      <div class="row">
+        <button class="btn ghost" id="tokenClear">Zmazať token</button>
+        <button class="btn" id="tokenCancel">Zrušiť</button>
+        <button class="btn primary" id="tokenSave">Uložiť token</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+<script>
+(function(){
+  "use strict";
+  var OWNER="Libriis", REPO="dxg-guardian", BRANCH="main", PATH="content.json";
+  var DRAFT_KEY="dxg-content-preview", TOKEN_KEY="dxg-gh-token";
+
+  // friendly labels
+  var LBL = {
+    cover:"Úvodná obrazovka (cover)", ui:"Hlavička a spoločné texty", products:"Produkty",
+    summary:"Verdikt · kit · pätička", timeline:"Plán launchu", print:"PDF titulka",
+    supplement:"01 · Performance", glasses:"02 · Vision", chair:"03 · Throne", mousepad:"04 · Surface",
+    hoodie:"05 · Hoodie", tee:"06 · Tee", cap:"07 · Cap", sleeve:"08 · Arm Sleeve",
+    phases:"Fázy", greet:"Pozdrav", title1:"Titulok 1", title2:"Titulok 2", sub:"Podnadpis",
+    enter:"Tlačidlo vstup", scroll:"Hint scroll", meta:"Pätička cover",
+    collection:"Kicker (Kolekcia)", t1:"Nadpis 1", t2:"Nadpis 2", tag:"Štítok vpravo",
+    size:"Štítok Veľkosť", flavour:"Štítok Príchuť", colourway:"Štítok Farebnosť", goldblack:"Hodnota farby",
+    view:"Štítok Zväčšiť", filter:"Štítok Filter", feedback:"Štítok Verdikt", love:"Tlačidlo Páči sa",
+    meh:"Tlačidlo Zvážim", notePh:"Placeholder poznámky", pdf:"Tlačidlo PDF", finalT1:"Záver nadpis", finalBody:"Záver text",
+    name:"Názov", badge:"Odznak", cat:"Kategória", body:"Popis", notes:"Štítky (čipy)", why:"Citát „prečo“",
+    kitTitle:"Kit lišta nadpis", viewKit:"Kit Zobraziť", clear:"Kit Vyčistiť", addKit:"Pridať do kolekcie", inKit:"V kolekcii",
+    sumKick:"Verdikt kicker", sumT:"Verdikt nadpis", loveN:"Počet páčia", mehN:"Počet zvážim", openN:"Počet bez hodnotenia",
+    noteCol:"Stĺpec Poznámka", noNote:"Bez poznámky", kitRecap:"Vybraná kolekcia", kitEmpty:"Kit prázdny text",
+    copy:"Kopírovať", copied:"Skopírované", send:"Odoslať tímu", reset:"Reset hodnotení", resetAsk:"Reset otázka",
+    verdictLove:"Verdikt Páči sa", verdictMeh:"Verdikt Zvážim", qrCap:"QR popis",
+    tlKick:"Launch kicker", tlT1:"Launch nadpis", tlTag:"Launch štítok", footRights:"Pätička text",
+    q:"Štvrťrok", title:"Názov fázy", chans:"Kanály", no:"Číslo", forLine:"Pripravené pre", kick:"Kicker"
+  };
+  var GROUP_ORDER=["cover","ui","products","summary","timeline","print"];
+
+  var $=function(s,r){return (r||document).querySelector(s)};
+  var el=function(t,c){var e=document.createElement(t);if(c)e.className=c;return e};
+  var clone=function(o){return JSON.parse(JSON.stringify(o))};
+  function isBi(n){return n&&typeof n==="object"&&!Array.isArray(n)&&(typeof n.sk==="string"||typeof n.en==="string")&&Object.keys(n).every(function(k){return k==="sk"||k==="en"})}
+  function isBiList(n){return n&&typeof n==="object"&&!Array.isArray(n)&&Array.isArray(n.sk)&&Array.isArray(n.en)}
+  function lab(k,fallback){return LBL[k]||fallback||k}
+
+  var working=null, base=null, fields=[], saveTimer=null;
+
+  function getPath(o,p){return p.reduce(function(a,k){return a==null?a:a[k]},o)}
+  function setPath(o,p,v){var a=o;for(var i=0;i<p.length-1;i++)a=a[p[i]];a[p[p.length-1]]=v}
+
+  function autosize(ta){ta.style.height="auto";ta.style.height=Math.min(ta.scrollHeight+2,300)+"px"}
+
+  function scheduleSave(){
+    setStatus("upravené…","");
+    clearTimeout(saveTimer);
+    saveTimer=setTimeout(function(){
+      try{localStorage.setItem(DRAFT_KEY,JSON.stringify(working));}catch(e){}
+      setStatus("náhľad uložený","ok");
+      var f=$("#preview"); try{ if(f&&f.contentWindow) f.contentWindow.postMessage({type:"dxg-preview-reload"},"*"); }catch(e){}
+    },350);
+  }
+  function setStatus(t,cls){var s=$("#saveStatus");s.textContent=t;s.className="status"+(cls?" "+cls:"")}
+
+  // ---- field builders ----
+  function biField(path,label,node){
+    var f=el("div","fld"); var l=el("span","lab"); l.textContent=label; f.appendChild(l);
+    var bi=el("div","bi");
+    ["sk","en"].forEach(function(L){
+      var c=el("div","cell"); var tag=el("span","tag"); tag.textContent=L.toUpperCase(); c.appendChild(tag);
+      var ta=el("textarea"); ta.value=node[L]!=null?node[L]:""; ta.rows=1;
+      ta.addEventListener("input",function(){ setPath(working,path.concat(L),ta.value); autosize(ta); scheduleSave(); });
+      c.appendChild(ta); bi.appendChild(c); setTimeout(function(){autosize(ta)},0);
+    });
+    f.appendChild(bi);
+    fields.push({el:f,text:(label+" "+(node.sk||"")+" "+(node.en||"")).toLowerCase()});
+    return f;
+  }
+  function biListField(path,label,node){
+    var f=el("div","fld"); var l=el("span","lab"); l.textContent=label+" — každý štítok na nový riadok"; f.appendChild(l);
+    var bi=el("div","bi");
+    ["sk","en"].forEach(function(L){
+      var c=el("div","cell"); var tag=el("span","tag"); tag.textContent=L.toUpperCase(); c.appendChild(tag);
+      var ta=el("textarea"); ta.value=(node[L]||[]).join("\n");
+      ta.addEventListener("input",function(){ setPath(working,path.concat(L),ta.value.split("\n").map(function(x){return x.trim()}).filter(Boolean)); autosize(ta); scheduleSave(); });
+      c.appendChild(ta); bi.appendChild(c); setTimeout(function(){autosize(ta)},0);
+    });
+    f.appendChild(bi);
+    fields.push({el:f,text:(label+" "+(node.sk||[]).join(" ")+" "+(node.en||[]).join(" ")).toLowerCase()});
+    return f;
+  }
+  function listField(path,label,arr){
+    var f=el("div","fld"); var l=el("span","lab"); l.textContent=label+" — každý na nový riadok"; f.appendChild(l);
+    var ta=el("textarea"); ta.value=arr.join("\n");
+    ta.addEventListener("input",function(){ setPath(working,path,ta.value.split("\n").map(function(x){return x.trim()}).filter(Boolean)); autosize(ta); scheduleSave(); });
+    f.appendChild(ta); setTimeout(function(){autosize(ta)},0);
+    fields.push({el:f,text:(label+" "+arr.join(" ")).toLowerCase()});
+    return f;
+  }
+  function textField(path,label,val){
+    var f=el("div","fld"); var l=el("span","lab"); l.textContent=label; f.appendChild(l);
+    var inp=el("input"); inp.type="text"; inp.value=val;
+    inp.addEventListener("input",function(){ setPath(working,path,inp.value); scheduleSave(); });
+    f.appendChild(inp);
+    fields.push({el:f,text:(label+" "+val).toLowerCase()});
+    return f;
+  }
+  function group(label,sub){
+    var d=el("details",sub?"sub":"grp"); if(!sub)d.open=false;
+    var s=el("summary"); s.textContent=label; d.appendChild(s);
+    var b=el("div","body"); d.appendChild(b);
+    return {el:d,body:b,summary:s};
+  }
+
+  function walk(node,path,container,label){
+    if(isBi(node)){ container.appendChild(biField(path,label,node)); return; }
+    if(isBiList(node)){ container.appendChild(biListField(path,label,node)); return; }
+    if(Array.isArray(node)){
+      if(node.every(function(x){return typeof x==="string"})){ container.appendChild(listField(path,label,node)); return; }
+      node.forEach(function(item,i){
+        var g=group(label.replace(/y$/,"")+" "+(i+1),true);
+        walk(item,path.concat(i),g.body,"");
+        container.appendChild(g.el);
+      });
+      return;
+    }
+    if(node&&typeof node==="object"){
+      var keys=Object.keys(node);
+      var g=group(label,path.length>1);
+      keys.forEach(function(k){ walk(node[k],path.concat(k),g.body,lab(k)); });
+      container.appendChild(g.el);
+      return;
+    }
+    container.appendChild(textField(path,label,String(node==null?"":node)));
+  }
+
+  function buildForm(){
+    var form=$("#form"); form.innerHTML=""; fields=[];
+    var keys=Object.keys(working).sort(function(a,b){var ia=GROUP_ORDER.indexOf(a),ib=GROUP_ORDER.indexOf(b);return (ia<0?99:ia)-(ib<0?99:ib)});
+    keys.forEach(function(k){
+      var g=group(lab(k),false);
+      walk(working[k],[k],g.body,lab(k));
+      // count leaves
+      g.summary.appendChild(Object.assign(el("span","gcount"),{textContent:countLeaves(working[k])+" polí"}));
+      form.appendChild(g.el);
+    });
+  }
+  function countLeaves(n){
+    if(isBi(n)||isBiList(n))return 1;
+    if(Array.isArray(n)){ if(n.every(function(x){return typeof x==="string"}))return 1; return n.reduce(function(a,x){return a+countLeaves(x)},0); }
+    if(n&&typeof n==="object")return Object.keys(n).reduce(function(a,k){return a+countLeaves(n[k])},0);
+    return 1;
+  }
+
+  // search filter
+  $("#search").addEventListener("input",function(){
+    var q=this.value.trim().toLowerCase();
+    fields.forEach(function(fl){ fl.el.style.display=(!q||fl.text.indexOf(q)>=0)?"":"none"; });
+    if(q){ document.querySelectorAll("details.grp,details.sub").forEach(function(d){d.open=true}); }
+  });
+
+  // ---- load ----
+  function applyContent(c){ working=clone(c); buildForm(); try{localStorage.setItem(DRAFT_KEY,JSON.stringify(working));}catch(e){} }
+
+  function load(){
+    setStatus("načítavam…","");
+    fetch("content.json?cb="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(live){
+      base=live?clone(live):null;
+      var draft=null; try{draft=JSON.parse(localStorage.getItem(DRAFT_KEY)||"null")}catch(e){}
+      if(live&&!draft){ applyContent(live); setStatus("načítané","ok"); }
+      else if(draft){ working=draft; if(!base)base=clone(draft); buildForm(); setStatus("rozpracované zmeny obnovené","ok"); }
+      else { toast("Nepodarilo sa načítať obsah (content.json).","err"); }
+    }).catch(function(){ toast("Chyba siete pri načítaní obsahu.","err"); });
+  }
+
+  // ---- discard ----
+  $("#discardBtn").addEventListener("click",function(){
+    if(!confirm("Zahodiť neuložené zmeny a načítať aktuálny živý obsah z webu?"))return;
+    try{localStorage.removeItem(DRAFT_KEY)}catch(e){}
+    load();
+    var f=$("#preview"); f.src="index.html?preview=1&t="+Date.now();
+  });
+
+  // ---- token ----
+  function getToken(){try{return localStorage.getItem(TOKEN_KEY)||""}catch(e){return""}}
+  $("#tokenBtn").addEventListener("click",function(){ $("#tokenInput").value=getToken(); $("#tokenScrim").classList.add("on"); });
+  $("#tokenCancel").addEventListener("click",function(){ $("#tokenScrim").classList.remove("on"); });
+  $("#tokenSave").addEventListener("click",function(){
+    var v=$("#tokenInput").value.trim();
+    try{ if(v)localStorage.setItem(TOKEN_KEY,v); }catch(e){}
+    $("#tokenScrim").classList.remove("on"); toast(v?"Token uložený ✓":"Token je prázdny","ok");
+  });
+  $("#tokenClear").addEventListener("click",function(){ try{localStorage.removeItem(TOKEN_KEY)}catch(e){} $("#tokenInput").value=""; toast("Token zmazaný","ok"); });
+
+  // ---- publish ----
+  function utf8b64(str){ return btoa(unescape(encodeURIComponent(str))); }
+  function ghHeaders(t){ return {Authorization:"Bearer "+t,Accept:"application/vnd.github+json","X-GitHub-Api-Version":"2022-11-28"}; }
+
+  $("#publishBtn").addEventListener("click",function(){ publish(); });
+  function publish(){
+    var token=getToken();
+    if(!token){ $("#tokenScrim").classList.add("on"); toast("Najprv vlož GitHub token.","err"); return; }
+    var btn=$("#publishBtn"); btn.disabled=true; var old=btn.textContent; btn.textContent="Publikujem…"; setStatus("publikujem…","");
+    var apiBase="https://api.github.com/repos/"+OWNER+"/"+REPO+"/contents/"+PATH;
+    fetch(apiBase+"?ref="+BRANCH,{headers:ghHeaders(token),cache:"no-store"})
+      .then(function(r){ if(r.status===404)return {sha:null}; if(r.status===401||r.status===403)throw new Error("AUTH"); if(!r.ok)throw new Error("GET "+r.status); return r.json(); })
+      .then(function(meta){
+        var body=JSON.stringify(working,null,2)+"\n";
+        var payload={message:"Update site content via admin panel",content:utf8b64(body),branch:BRANCH};
+        if(meta&&meta.sha)payload.sha=meta.sha;
+        return fetch(apiBase,{method:"PUT",headers:ghHeaders(token),body:JSON.stringify(payload)});
+      })
+      .then(function(r){ if(r.status===401||r.status===403)throw new Error("AUTH"); if(!r.ok)return r.text().then(function(t){throw new Error("PUT "+r.status+": "+t)}); return r.json(); })
+      .then(function(){
+        base=clone(working);
+        setStatus("publikované ✓","ok");
+        toast("Publikované ✓ Web sa obnoví o cca 1 minútu.","ok");
+      })
+      .catch(function(e){
+        setStatus("chyba","err");
+        if(String(e.message).indexOf("AUTH")>=0){ toast("Token neplatí alebo nemá práva. Skontroluj ho (Contents: Read and write).","err"); $("#tokenScrim").classList.add("on"); }
+        else toast("Publikovanie zlyhalo: "+e.message,"err");
+      })
+      .then(function(){ btn.disabled=false; btn.textContent=old; });
+  }
+
+  // ---- toast ----
+  var toastTimer=null;
+  function toast(msg,cls){
+    var t=$("#toast"); t.textContent=msg; t.className="toast on"+(cls?" "+cls:"");
+    clearTimeout(toastTimer); toastTimer=setTimeout(function(){t.className="toast"+(cls?" "+cls:"")},4200);
+  }
+
+  load();
+})();
+</script>
+</body>
+</html>
